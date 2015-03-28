@@ -12,11 +12,18 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-
+#Template Path(softcoded)
+TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
+#Static media Path
+STATIC_PATH = os.path.join(BASE_DIR, 'static')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+print "from settings.py"
+print __file__
+print os.path.dirname(__file__)
+print os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '(1zx5x^q(84zw^z(@6%#24$t2_p&dv@y23f95db!t-nrh1q4b1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -63,6 +70,9 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+#Templates
+TEMPLATE_DIRS = (TEMPLATE_PATH
+    ,)
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
@@ -82,3 +92,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    STATIC_PATH,
+    )
+
