@@ -1,3 +1,19 @@
 from django.db import models
 
 # Create your models here.
+class Category(models.Model):
+	name = models.CharField(max_length = 128, unique = True)#Atrribute
+	views = models.IntegerField(default = 0)
+	likes = models.IntegerField(default = 0)
+	#__unicode__ is like toString() In java, used to refer to this relation
+	def __unicode__(self):
+		return self.name
+
+class Page(models.Model):
+	category = models.ForeignKey(Category)
+	title = models.CharField(max_length = 128)
+	url = models.URLField()
+	views = models.IntegerField(default = 0)
+
+	def __unicode__(self):
+		return self.title
